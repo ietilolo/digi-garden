@@ -9,17 +9,32 @@ function App() {
 
   const [plantOptions] = useState(PlantOptions);
   const [myGarden, setmyGarden] = useState(GardenDB);
+  const [errors, setErrors] = useState([]);
 
   const addPlant = (event) => {
     event.preventDefault();
-    let option = window.document.forms[0].plantOption.value
-    let plant = plantOptions.find(i => i.item === option);
-    setmyGarden([...myGarden, plant]);
+    let option = window.document.forms[0].plantOption.value;
+    let qty = window.document.forms[0].plant_qty.value;
+
+    if ( qty < 1 ) {
+      setErrors([...errors, `Please enter amount of ${option} planted`]);
+    } else {
+      let plant = plantOptions.find(i => i.item === option);
+      plant.qty = qty;
+      setmyGarden([...myGarden, plant]);
+      window.document.forms[0].plant_qty.value = 0;
+    }
+  }
+
+  const removePlant = (index) => {
+    let newGarden = [...myGarden];
+    newGarden.splice(index, 1);
+    setmyGarden(newGarden);
   }
 
   return (
     <div className="App">
-      <Garden garden={myGarden}/>
+      <Garden garden={myGarden} removePlant={removePlant}/>
       <Sidebar plantOptions={plantOptions} addPlant={addPlant}/>
     </div>
   );

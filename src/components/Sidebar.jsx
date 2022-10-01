@@ -12,6 +12,11 @@ const Sidebar = ({ plantOptions, addPlant }) => {
           {plantOptions.map((option, i) => (<option value={ option.item } key={ i }>{ option.item }</option>) )}
 
         </select>
+        <div className="form_div_qty">
+          <label htmlFor="plant_qty">How many have you planted?</label>
+          <br />
+          <input type="number" name="plant_qty" id="plant_qty"/>
+        </div>
         <button className="sidebar_btn_submit" onClick={ addPlant }>Add new Plant</button>
       </form>
     </div>

@@ -1,13 +1,12 @@
 import Plant from "./Plant";
-import { useState } from "react";
 import "./styles/Garden.scss";
 
-const Garden = ({ garden }) => {
+const Garden = ({ garden, removePlant }) => {
 
   if ( garden.length > 0 ) {
     return (
       <div className="garden">
-        { garden.map((plant, i) => <Plant plant={ plant } key={i}/>) }
+        { garden.map((plant, i) => <Plant plant={ plant } key={i} removePlant={removePlant} index={i}/>) }
       </div>
     )
   } else {
