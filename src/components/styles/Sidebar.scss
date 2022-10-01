@@ -1,0 +1,31 @@
+.sidebar {
+  display: inline-block;
+  width: 30vw;
+  padding: 30px;
+
+  .sidebar_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .sidebar_options {
+    border: 1px solid grey;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+  }
+
+  .sidebar_btn_submit {
+    display: block;
+    padding: 10px 20px;
+    border: none;
+    background-color: #61960d;
+    color: white;
+    cursor: pointer;
+    transition: background-color .5s ease;
+
+    &:hover {
+      background-color: #49700b;
+    }
+  }
+}
