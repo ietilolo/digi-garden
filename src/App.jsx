@@ -17,12 +17,15 @@ function App() {
     let qty = window.document.forms[0].plant_qty.value;
 
     if ( qty < 1 ) {
-      setErrors([...errors, `Please enter amount of ${option} planted`]);
+      if ( !errors.length ) {
+        setErrors([...errors, `Please enter amount of ${option} planted`]);
+      }
     } else {
       let plant = plantOptions.find(i => i.item === option);
       plant.qty = qty;
       setmyGarden([...myGarden, plant]);
       window.document.forms[0].plant_qty.value = 0;
+      setErrors([]);
     }
   }
 
@@ -35,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <Garden garden={myGarden} removePlant={removePlant}/>
-      <Sidebar plantOptions={plantOptions} addPlant={addPlant}/>
+      <Sidebar plantOptions={plantOptions} addPlant={addPlant} errors={errors}/>
     </div>
   );
 }

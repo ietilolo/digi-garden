@@ -1,7 +1,7 @@
-
+import Errors from "./Errors";
 import "./styles/Sidebar.scss";
 
-const Sidebar = ({ plantOptions, addPlant }) => {
+const Sidebar = ({ plantOptions, addPlant, errors }) => {
 
   return (
     <div className="sidebar">
@@ -15,10 +15,12 @@ const Sidebar = ({ plantOptions, addPlant }) => {
         <div className="form_div_qty">
           <label htmlFor="plant_qty">How many have you planted?</label>
           <br />
-          <input type="number" name="plant_qty" id="plant_qty"/>
+          <input type="number" placeholder="0" min={0} max={50} name="plant_qty" id="plant_qty"/>
         </div>
         <button className="sidebar_btn_submit" onClick={ addPlant }>Add new Plant</button>
       </form>
+
+      <Errors errors={errors}/>
     </div>
   )
 }
